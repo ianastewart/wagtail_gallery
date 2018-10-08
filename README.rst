@@ -1,7 +1,7 @@
 Introduction
 ===========================================
 
-This is a very basic podcast app that integrates with Wagtail. It allows a person to upload a mp3 and then play it on the website. It generates a rss/xml feed that you can submit to Itunes, Google and/or Blubrry.
+This is a very basic gallery app that integrates with Wagtail. It allows a person to upload images and order them on a gallery page. Said gallery page then shows the low-res thumbnails, and when clicked it opens up a high res version with captions.
 
 This app is simple, and not feature rich. It does the basics and thats it. I will probably add more features and options to it as time permits, but only if requests are made.
 
@@ -9,22 +9,25 @@ It is also not production ready as there are **no tests currently written** for 
 
 I hope to write tests in a month or so when I get a bit of free time. I also hope to add a bunch of features in the near future.
 
-Please report any errors you encounter. I will try resolve them quickly and then add tests for them. Please visit: `wagtail_podcast <https://gitlab.com/dfmeyer/wagtail_podcast>`_ .  Documentation is at readthedocs.io: `wagtail_podcast documentation <https://wagtail-podcast.readthedocs.io/en/latest/>`_
+Please report any errors you encounter. I will try resolve them quickly and then add tests for them as things come up so it doesn't reoccur. Please visit `wagtail_gallery git <https://gitlab.com/dfmeyer/wagtail_gallery>`_ to make pull requests or log issues etc. Documentation is at readthedocs.io: `wagtail_gallery documentation <https://wagtail-gallery.readthedocs.io/en/latest/>`_
 
 Installation
 ===================
 
-To install run ``pip install wagtail_podcast``
+To install run ``pip install wagtail_gallery``
 
-It should automatically install mutagen; however, if it doesn't then you will need to install it manually with: ``pip install mutagen``
+It should automatically install all the necessary dependencies.
 
-Remember to add ``wagtail_podcast`` to your installed apps in settings.py i.e.
+Remember to add ``wagtail_gallery`` (along with the others mentioned) to your installed apps in settings.py i.e.
 
     .. code-block:: Python
 
         INSTALLED_APPS = [
             ...
-            'wagtail_podcast',
+            'wagtail_gallery',
+            'wagtail.contrib.routable_page',
+            'wagtail.contrib.modeladmin',
+            'django_social_share',
         ]
 
 Requirements:
@@ -32,7 +35,6 @@ Requirements:
     .. code-block:: Python
 
         python3
-        mutagen
         wagtail
         django
         django-social-share
@@ -42,19 +44,10 @@ I'm not quite sure how far back this app works; however, it should work going ba
 Caveats
 ============
 
-#.  I haven't implemented categories at all so that is rather broken. You need to go into wagtail_podcast/templates/wagtail_podcast/feed.xml
-    and change it to something more appropriate
+#.  I haven't implemented sub-categories at all. Its a planned feature.
 
-    .. code-block:: XML
+#. You can only have one Gallery Root Page at this point in time. I really do want to add the ability to have many. I just haven't gotten round to it. It should be quite simple.
 
-        <itunes:category text="{{ page.category }}">
-            <itunes:category text="Christianity"/>
-        </itunes:category>
+#. URLs are not yet fully internationalised as ``/category/`` isn't translated. I'll get to this eventually.
 
-#. There is currently no handling of ogg files though I plan on doing auto conversion to them at some point. All major browsers support mp3 these days.
-
-#. This is made only for audio podcasts though I may support video podcasts at a later stage since that doesn't require much changing.
-
-#. Seasons are currently not supported. This is really high on my list, but I haven't figured out a really great way to do it. The page hierarchy is already going to be a bit of a mess.
-
-#. This currently only supports one podcast per wagtail site. It should be relatively easy to make it support multiple; however, I'll only do it if there is demand for the feature.
+#. All galleries are public. No permissions have been integrated; however, this is a planned feature.

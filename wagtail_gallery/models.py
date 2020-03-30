@@ -343,10 +343,7 @@ class GalleryImage(Orderable):
     )
     """Actual image to be used for said GalleryImage object"""
 
-    content_panels = Page.content_panels + [
-        FieldPanel('description'),
-        ImageChooserPanel('image')
-    ]
+    panels = [ FieldPanel('description'), ImageChooserPanel('image') ]
 
 
 class Category(models.Model):

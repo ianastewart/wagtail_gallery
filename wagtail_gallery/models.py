@@ -1,7 +1,7 @@
 from django.db import models
-from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import RichTextField, FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.models import Page, Orderable
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.fields import RichTextField
 from modelcluster.fields import ParentalKey
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
@@ -10,7 +10,7 @@ from .managers import CategoryManager
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import slugify
 from wagtail.search import index
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 import django.http
 
 
@@ -258,7 +258,7 @@ class GalleryPage(Page):
         InlinePanel('gallery_image', label=_("Gallery image"),
                     panels=[
                         FieldPanel('description'),
-                        ImageChooserPanel('image')]
+                        FieldPanel('image')]
                     )
     ]
 
@@ -343,7 +343,7 @@ class GalleryImage(Orderable):
     )
     """Actual image to be used for said GalleryImage object"""
 
-    panels = [ FieldPanel('description'), ImageChooserPanel('image') ]
+    panels = [ FieldPanel('description'), FieldPanel('image') ]
 
 
 class Category(models.Model):

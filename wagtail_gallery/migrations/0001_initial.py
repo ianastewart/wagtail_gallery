@@ -4,7 +4,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
 import wagtail.contrib.routable_page.models
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             name='GalleryPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.core.fields.RichTextField(blank=True, help_text='Body of text on page', verbose_name='Body')),
+                ('body', wagtail.fields.RichTextField(blank=True, help_text='Body of text on page', verbose_name='Body')),
                 ('description', models.TextField(blank=True, help_text='Short description of gallery', null=True, verbose_name='Description')),
                 ('categories', models.ManyToManyField(blank=True, help_text='Categories relevant to gallery', through='wagtail_gallery.CategoryGalleryPage', to='wagtail_gallery.Category', verbose_name='Categories')),
             ],
@@ -68,7 +68,7 @@ class Migration(migrations.Migration):
             name='GalleryParentPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.core.fields.RichTextField(blank=True, help_text='Text to appear on gallery root page', verbose_name='Body')),
+                ('body', wagtail.fields.RichTextField(blank=True, help_text='Text to appear on gallery root page', verbose_name='Body')),
             ],
             options={
                 'verbose_name': 'Gallery Root Page',

@@ -8,7 +8,7 @@ URL = 'https://gitlab.com/dfmeyer/wagtail_gallery'
 EMAIL = 'me3064@gmail.com'
 AUTHOR = 'Daniel F. Meyer'
 REQUIRES_PYTHON = '>=3.5'
-VERSION = '0.1.1'
+VERSION = '0.1.2'
 LICENSE = 'MIT'
 KEYWORDS = ['Django', 'Wagtail', 'gallery']
 PROJECT_URLS = {

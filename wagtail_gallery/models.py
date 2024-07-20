@@ -10,7 +10,7 @@ from .managers import CategoryManager
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import slugify
 from wagtail.search import index
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 import django.http
 
 

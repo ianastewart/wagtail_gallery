@@ -33,7 +33,7 @@ class GalleryViewSetGroup(SnippetViewSetGroup):
     menu_icon = "picture"
     menu_order = 300
     items = (GalleryPageViewSet, GalleryCategoryViewSet)
-    add_to_settings_menu = True
+    add_to_admin_menu = True
 
 
 register_snippet(GalleryViewSetGroup)

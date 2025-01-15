@@ -1,5 +1,4 @@
 from django.utils.translation import gettext_lazy as _
-
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
 
@@ -34,6 +33,7 @@ class GalleryViewSetGroup(SnippetViewSetGroup):
     menu_icon = "picture"
     menu_order = 300
     items = (GalleryPageViewSet, GalleryCategoryViewSet)
+    add_to_settings_menu = True
 
 
 register_snippet(GalleryViewSetGroup)

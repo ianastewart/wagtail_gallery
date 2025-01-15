@@ -35,5 +35,5 @@ class GalleryViewSetGroup(SnippetViewSetGroup):
     menu_order = 300
     items = (GalleryPageViewSet, GalleryCategoryViewSet)
 
-register_snippet(GalleryViewSetGroup)
 
+register_snippet(GalleryViewSetGroup)

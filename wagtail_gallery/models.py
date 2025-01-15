@@ -245,16 +245,16 @@ class GalleryPage(Page):
                                    verbose_name=_('Description'))
     """Optional short description of the gallery used when showing cards etc."""
 
-    categories = models.ManyToManyField('wagtail_gallery.Category', through='wagtail_gallery.CategoryGalleryPage', blank=True,
-                                        help_text=_('Categories relevant to gallery'), verbose_name=_('Categories'))
-    """Categories to which a particular gallery belongs"""
+    # categories = models.ManyToManyField('wagtail_gallery.Category', through='wagtail_gallery.CategoryGalleryPage', blank=True,
+    #                                     help_text=_('Categories relevant to gallery'), verbose_name=_('Categories'))
+    # """Categories to which a particular gallery belongs"""
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
         FieldPanel('description'),
-        MultiFieldPanel([
-            InlinePanel("gallery_categories", label=_("Categories"))
-        ]),
+        # MultiFieldPanel([
+        #     InlinePanel("gallery_categories", label=_("Categories"))
+        # ]),
         InlinePanel('gallery_image', label=_("Gallery image"),
                     panels=[
                         FieldPanel('description'),
@@ -269,10 +269,10 @@ class GalleryPage(Page):
     search_fields = Page.search_fields + [
         index.SearchField('body'),
         index.SearchField('description'),
-        index.RelatedFields('categories', [
-            index.SearchField('name'),
-            index.SearchField('description'),
-        ])
+        # index.RelatedFields('categories', [
+        #     index.SearchField('name'),
+        #     index.SearchField('description'),
+        # ])
     ]
 
     class Meta:
